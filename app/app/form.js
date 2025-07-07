@@ -16,7 +16,25 @@ export default function FormScreen() {
 
   const handleChange = (key, value) => setForm({ ...form, [key]: value });
 
+  const validateEmail = (email) => {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
+  };
+  const validatePhone = (phone) => {
+    // Accepts 10-15 digits, optional + at start
+    const re = /^\+?\d{10}$/;
+    return re.test(phone);
+  };
+
   const handleSubmit = async () => {
+    if (!validateEmail(form.email)) {
+      Toast.show({ type: 'error', text1: 'Invalid email', text2: 'Check the email address.' });
+      return;
+    }
+    if (!validatePhone(form.phone)) {
+      Toast.show({ type: 'error', text1: 'Invalid phone number', text2: 'Check the phone number.' });
+      return;
+    }
     setLoading(true);
     try {
       const jwt = await AsyncStorage.getItem('jwt');
