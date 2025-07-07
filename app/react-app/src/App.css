@@ -1,0 +1,152 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', Arial, sans-serif;
+  background: #f9f9f9;
+  color: #222;
+}
+
+.centered-container {
+  max-width: 400px;
+  margin: 40px auto;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.centered-container h2 {
+  text-align: center;
+  margin-bottom: 24px;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.centered-container form,
+.centered-container > form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.centered-container input,
+.centered-container select,
+.centered-container textarea {
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  background: #f7f7f7;
+  color: #222;
+  outline: none;
+  transition: border 0.2s;
+}
+
+.centered-container input:focus,
+.centered-container select:focus,
+.centered-container textarea:focus {
+  border: 1.5px solid #007bff;
+}
+
+.centered-container button {
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background: #007bff;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: background 0.2s;
+}
+
+.centered-container button:disabled {
+  background: #b3d1ff;
+  cursor: not-allowed;
+}
+
+.centered-container button:not(:disabled):hover {
+  background: #0056b3;
+}
+
+.tiles {
+  display: flex;
+  gap: 12px;
+  margin: 24px 0 16px 0;
+  justify-content: space-between;
+}
+
+.tile {
+  flex: 1;
+  background: #f2f2f2;
+  border-radius: 10px;
+  padding: 18px 0;
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #222;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+}
+
+@media (max-width: 600px) {
+  .centered-container {
+    max-width: 98vw;
+    margin: 0.5rem;
+    padding: 18px 6px;
+    border-radius: 10px;
+  }
+  .tiles {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .tile {
+    padding: 14px 0;
+    font-size: 1rem;
+  }
+}
