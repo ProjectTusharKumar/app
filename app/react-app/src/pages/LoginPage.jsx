@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
-export default function LoginPage() {
+export default function LoginPage({ onLogin }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
@@ -18,6 +18,7 @@ export default function LoginPage() {
       localStorage.setItem('jwt', token);
       localStorage.setItem('employeeId', empId);
       toast.success('Login successful!');
+      if (onLogin) onLogin();
       navigate('/dashboard');
     } catch (err) {
       toast.error(err?.response?.data?.message || 'Login failed');

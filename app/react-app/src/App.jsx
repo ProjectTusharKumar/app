@@ -1,5 +1,4 @@
-import React from 'react';
-import { useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -10,14 +9,19 @@ import FormPage from './pages/FormPage';
 import LeadsPage from './pages/LeadsPage';
 
 function App() {
-  const [count, setCount] = useState(0)
-  const isAuthenticated = !!localStorage.getItem('jwt');
+  const [isAuthenticated, setIsAuthenticated] = useState(!!localStorage.getItem('jwt'));
+
+  useEffect(() => {
+    const onStorage = () => setIsAuthenticated(!!localStorage.getItem('jwt'));
+    window.addEventListener('storage', onStorage);
+    return () => window.removeEventListener('storage', onStorage);
+  }, []);
 
   return (
     <Router>
       <>
       <Routes>
-        <Route path="/login" element={<LoginPage />} />
+        <Route path="/login" element={<LoginPage onLogin={() => setIsAuthenticated(true)} />} />
         <Route path="/dashboard" element={isAuthenticated ? <DashboardPage /> : <Navigate to="/login" />} />
         <Route path="/form" element={isAuthenticated ? <FormPage /> : <Navigate to="/login" />} />
         <Route path="/leads" element={isAuthenticated ? <LeadsPage /> : <Navigate to="/login" />} />
